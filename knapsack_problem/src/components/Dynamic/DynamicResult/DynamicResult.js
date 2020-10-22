@@ -11,16 +11,6 @@ class DynamicResult extends Component {
     loading: true
   };
 
-  componentDidMount () {
-    axios.get('localhost:3001/DynamicSolver.json')
-    .then( res => {
-      this.setState({loading: false});
-      console.log(res.data);
-    })
-    .catch( err => {
-      console.log(err);
-    })
-  }
 
   render() {
     

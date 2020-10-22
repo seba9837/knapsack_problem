@@ -28,18 +28,15 @@ class DynamicSolverBuilder extends Component {
   sumaryConfirmedHandler = () => {
     this.setState({ loadingModal: true, submiting: false });
 
-    axios.post('localhost:3001/DynamicSolver.json', 
-      { weight: this.state.weights,
-        worth: this.state.worth,
-        amount:this.state.stuffAmount
-      })
+    axios.post('http://localhost:3001/dynamicSolver', 'cokolwik'
+      )
       .then( res => {
         console.log(res);
         this.setState({resultModal:true, loadingModal: false});
+        console.log("działa")
       })
       .catch( err => {
         console.log(err);
-        console.log("nie działa bo nie ma serwera cepie");
       })
   };
 
