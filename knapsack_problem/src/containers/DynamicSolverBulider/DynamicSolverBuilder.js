@@ -15,6 +15,8 @@ class DynamicSolverBuilder extends Component {
     weights: "",
     worth: "",
     stuffAmount: 0,
+    maxWeight: 0,
+    answer: "Brak danych"
   };
 
   dataConfirmedHandler = () => {
@@ -28,12 +30,17 @@ class DynamicSolverBuilder extends Component {
   sumaryConfirmedHandler = () => {
     this.setState({ loadingModal: true, submiting: false });
 
-    axios.post('http://localhost:3001/dynamicSolver', 'cokolwik'
+    axios.post('/dynamicSolver', {
+      weight: this.state.weights,
+      worth: this.state.worth,
+      amount: this.state.stuffAmount,
+      max: this.state.maxWeight
+    }
       )
       .then( res => {
-        console.log(res);
-        this.setState({resultModal:true, loadingModal: false});
-        console.log("działa")
+        console.log("Dane wysłane");
+        this.setState({resultModal:true, loadingModal: false, answer: res.data});
+        console.log(this.state.answer);
       })
       .catch( err => {
         console.log(err);
@@ -58,7 +65,10 @@ class DynamicSolverBuilder extends Component {
     this.setState({ stuffAmount: event.target.value });
     console.log(this.state.stuffAmount);
   };
-
+  updateMaxWeight = (event) => {
+    this.setState({ maxWeight: event.target.value });
+    console.log(this.state.maxWeight);
+  }
   render() {
     return (
       <Cont>
@@ -72,13 +82,14 @@ class DynamicSolverBuilder extends Component {
             weight={this.state.weights}
             worth={this.state.worth}
             number={this.state.stuffAmount}
+            max={this.state.maxWeight}
           />
         </Modal>
         <Modal
           show={this.state.resultModal}
           modalClosed={this.resultCloseHandler}
         >
-          <DynamicResult resultContinued={this.resultCloseHandler} />
+          <DynamicResult resultContinued={this.resultCloseHandler} data={this.state.answer}/>
         </Modal>
         <Modal show={this.state.loadingModal}
         modalClosed={this.resultCloseHandler}>
@@ -91,6 +102,7 @@ class DynamicSolverBuilder extends Component {
           weightChanged={(event) => this.updateWeightsOfElements(event)}
           worthChanged={(event) => this.updateWorthOfElements(event)}
           numberChanged={(event) => this.updateNumberOfElements(event)}
+          maxWeightChanged={(event) => this.updateMaxWeight(event)}
         />
       </Cont>
     );

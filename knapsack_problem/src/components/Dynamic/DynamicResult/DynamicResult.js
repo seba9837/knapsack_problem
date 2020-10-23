@@ -1,21 +1,23 @@
 import React, {Component} from "react";
-import axios from 'axios';
 
 import Spinner from '../../UI/Spinner/Spinner';
 import Cont from '../../../hoc/Cont/Cont';
 
 class DynamicResult extends Component {
+  
+ 
+//shouldComponentUpdate(nextProps){
+//  return this.props !== nextProps;
+//}
 
-  state = {
-    serverAnswer: null,
-    loading: true
-  };
-
-
+componentDidUpdate(){
+  console.log(this.props.data.response);
+}
   render() {
     
-  let content = <Cont>
-    <div>
+
+    return (
+      <div>
         <h2>Wynik algorytmu:</h2>
         <button
           type='button'
@@ -25,15 +27,6 @@ class DynamicResult extends Component {
           Gotowe
         </button>
       </div>
-  </Cont>
-  if ( this.state.loading) {
-    content = <Spinner/>
-  }
-
-    return (
-      <Cont>
-        {content}
-      </Cont>
     );
   }
 }

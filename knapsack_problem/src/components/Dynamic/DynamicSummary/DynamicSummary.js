@@ -27,6 +27,8 @@ const dynamicSummary = (props) => {
 
       <p>Liczba przedmiotów</p>
       <p>{props.number}</p>
+      <p>Maksymalna waga</p>
+      <p>{props.max}</p>
       <button
         type='button'
         class='btn btn-outline-danger'

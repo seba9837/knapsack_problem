@@ -36,6 +36,36 @@ const DynamicSheet = (props) => {
         </Card>
       </Collapse>
       <Form>
+      <FormGroup>
+          <Label>Liczba elementów</Label>
+          <InputGroup>
+            <InputGroupAddon addonType='prepend'>$</InputGroupAddon>
+            <Input
+              placeholder='Amount'
+              min={0}
+              max={100}
+              type='number'
+              step='1'
+              onChange={props.numberChanged}
+              //value={props.value}
+            />
+          </InputGroup>
+        </FormGroup>
+        <FormGroup>
+          <Label>Maksymalna waga</Label>
+          <InputGroup>
+            <InputGroupAddon addonType='prepend'>$</InputGroupAddon>
+            <Input
+              placeholder='Amount'
+              min={0}
+              max={100}
+              type='number'
+              step='1'
+              onChange={props.maxWeightChanged}
+              //value={props.value}
+            />
+          </InputGroup>
+        </FormGroup>
         <FormGroup>
           <Label>Wagi</Label>
           <Input
@@ -52,21 +82,6 @@ const DynamicSheet = (props) => {
           />
         </FormGroup>
 
-        <FormGroup>
-          <Label>Liczba elementów</Label>
-          <InputGroup>
-            <InputGroupAddon addonType='prepend'>$</InputGroupAddon>
-            <Input
-              placeholder='Amount'
-              min={0}
-              max={100}
-              type='number'
-              step='1'
-              onChange={props.numberChanged}
-              value={props.value}
-            />
-          </InputGroup>
-        </FormGroup>
         <Button color='secondary' onClick={props.submitted}>
           Gotowe
         </Button>
