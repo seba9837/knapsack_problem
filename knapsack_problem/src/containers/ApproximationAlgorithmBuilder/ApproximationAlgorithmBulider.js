@@ -17,7 +17,8 @@ class AproxiamtionAlgorithmBuilder extends Component {
     worth: "",
     stuffAmount: 0,
     maxWeight: 0,
-    answer: "Brak danych"
+    answer: [],
+    totalWorth: 0
   };
 
   dataConfirmedHandler = () => {
@@ -39,7 +40,7 @@ class AproxiamtionAlgorithmBuilder extends Component {
     }
     ).then( res => {
       console.log("Dane wysłane");
-      this.setState({resultModal:true, loadingModal: false, answer: res.data});
+      this.setState({resultModal:true, loadingModal: false, answer: res.data.knapsack, totalWorth: res.data.totalWorth});
       console.log(this.state.answer);
     }).catch( err => {
       console.log(err);
@@ -69,7 +70,10 @@ class AproxiamtionAlgorithmBuilder extends Component {
     console.log(this.state.maxWeight);
   };
   
+  
+
   render() {
+
     return (
       <Cont>
         <Modal
@@ -96,7 +100,8 @@ class AproxiamtionAlgorithmBuilder extends Component {
         >
           <AproximationResult 
             resultContinued={this.resultCloseHandler} 
-            data={this.state.answer} />
+            answerFromServer={this.state.answer}
+            totalWorth={this.state.totalWorth} />
         </Modal>
         <AproximationSheet 
           submitted={this.dataConfirmedHandler}

@@ -17,7 +17,9 @@ class DynamicSolverBuilder extends Component {
     worth: "",
     stuffAmount: 0,
     maxWeight: 0,
-    answer: "Brak danych"
+    answer: {
+      maxWorth: "Brak danych"
+    }
   };
 
   dataConfirmedHandler = () => {
@@ -97,7 +99,7 @@ class DynamicSolverBuilder extends Component {
         >
           <DynamicResult 
             resultContinued={this.resultCloseHandler} 
-            data={this.state.answer}/>
+            answerFromServer={this.state.answer.maxWorth}/>
         </Modal>
         
         <DynamicSheet

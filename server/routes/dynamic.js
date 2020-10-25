@@ -46,7 +46,7 @@ router.post('/dynamicSolver', (req, res) => {
     console.log(A[n][W]);
 
     res.status(200).json({
-        response: A[n][W]
+        maxWorth: A[n][W]
     });
 })
 

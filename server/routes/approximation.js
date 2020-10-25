@@ -40,44 +40,30 @@ router.post('/approximationSolver', (req, res) => {
 
     let currentWeight = 0;
     let currentPosition = 0;
+    let currentWorth = 0;
 
-    knapsack_weight = new Array(n);
-    knapsack_worth = new Array(n);
-    knapsack_Hj = new Array(n);
-    
+    var knapsack = [];
 
-    for(var i=0; i<n; i++)
+    for(var i=1; i<=n; i++)
     {
-        if(w[i]+currentWeight<W)
+        if(w[i-1]+currentWeight<=W)
         {
-            knapsack_weight[currentPosition] = w[i];
-            knapsack_worth[currentPosition] = c[i];
-            knapsack_Hj[currentPosition] = c[i]/w[i];
-
-            currentWeight = currentWeight + w[i];
+            knapsack.push({
+                id: i,
+                weight: w[i-1],
+                worth: c[i-1],
+                ratio: c[i-1]/w[i-1]
+            })
+            currentWeight = currentWeight + w[i-1];
             currentPosition++;
+            currentWorth = currentWorth + c[i-1];
         }
     }
+    console.log(knapsack);
 
-    console.log({
-        wagi: knapsack_weight,
-        wartości: knapsack_worth,
-        stosunek_CW: knapsack_Hj
-    });
-    
-    knapsack_weight.splice(currentPosition,n-currentPosition);
-    knapsack_worth.splice(currentPosition,n-currentPosition);
-    knapsack_Hj.splice(currentPosition,n-currentPosition);
-
-    console.log("Po obcięciu");
-    console.log({
-        wagi: knapsack_weight,
-        wartości: knapsack_worth,
-        stosunek_CW: knapsack_Hj
-    });
-    
     res.status(200).json({
-        response: "m"
+        knapsack: knapsack,
+        totalWorth: currentWorth
     });
 })
 

@@ -1,33 +1,20 @@
-import React, {Component} from "react";
+import React from "react";
 
-import Spinner from '../../UI/Spinner/Spinner';
-import Cont from '../../../hoc/Cont/Cont';
+const aproximationResult = (props) => {
+  return (
+    <div>
+      <h2>Wynik algorytmu:</h2>
+      <p>Maksymalna wartość plecaka:</p>
+      <p>{props.answerFromServer} $</p>
+      <button
+        type='button'
+        class='btn btn-outline-secondary'
+        onClick={props.resultContinued}
+      >
+        Gotowe
+      </button>
+    </div>
+  );
+};
 
-class DynamicResult extends Component {
-  
- 
-//shouldComponentUpdate(nextProps){
-//  return this.props !== nextProps;
-//}
-
-componentDidUpdate(){
-  console.log(this.props.data.response);
-}
-  render() {
-    
-
-    return (
-      <div>
-        <h2>Wynik algorytmu:</h2>
-        <button
-          type='button'
-          class='btn btn-outline-secondary'
-          onClick={this.props.resultContinued}
-        >
-          Gotowe
-        </button>
-      </div>
-    );
-  }
-}
-export default DynamicResult;
+export default aproximationResult;
