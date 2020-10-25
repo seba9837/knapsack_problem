@@ -36,16 +36,7 @@ const AproximationSheet = (props) => {
       </Collapse>
       <Form>
         <FormGroup>
-          <Label>Dane</Label>
-          <Input placeholder='Dolla dolla billz yo!' />
-        </FormGroup>
-        <FormGroup>
-          <Label>Inne dane</Label>
-          <Input placeholder='Dolla dolla billz yo!' />
-        </FormGroup>
-
-        <FormGroup>
-          <Label>Liczba czegoś tam</Label>
+          <Label>Liczba elementów</Label>
           <InputGroup>
             <InputGroupAddon addonType='prepend'>$</InputGroupAddon>
             <Input
@@ -54,8 +45,31 @@ const AproximationSheet = (props) => {
               max={100}
               type='number'
               step='1'
+              onChange={props.numberChanged}
             />
           </InputGroup>
+        </FormGroup>
+        <FormGroup>
+          <Label>Max</Label>
+          <InputGroup>
+            <InputGroupAddon addonType='prepend'>$</InputGroupAddon>
+            <Input
+              placeholder='Amount'
+              min={0}
+              max={100}
+              type='number'
+              step='1'
+              onChange={props.maxWeightChanged}
+            />
+          </InputGroup>
+        </FormGroup>
+        <FormGroup>
+          <Label>Wagi</Label>
+          <Input placeholder='Dolla dolla billz yo!' onChange={props.weightChanged}/>
+        </FormGroup>
+        <FormGroup>
+          <Label>Wartość</Label>
+          <Input placeholder='Dolla dolla billz yo!' onChange={props.worthChanged}/>
         </FormGroup>
         <Button color='secondary' onClick={props.submitted}>
           Gotowe

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import axios from 'axios';
+
 import DynamicSheet from "../../components/Dynamic/DynamicSheet/DynamicSheet";
 import Cont from "../../hoc/Cont/Cont";
 import Modal from "../../components/UI/Modal/Modal";
 import DynamicSummary from "../../components/Dynamic/DynamicSummary/DynamicSummary";
 import DynamicResult from "../../components/Dynamic/DynamicResult/DynamicResult";
-import { Spinner } from "reactstrap";
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 class DynamicSolverBuilder extends Component {
   state = {
@@ -85,17 +86,20 @@ class DynamicSolverBuilder extends Component {
             max={this.state.maxWeight}
           />
         </Modal>
+        <Modal 
+          show={this.state.loadingModal}
+          modalClosed={this.resultCloseHandler}>
+        <Spinner/>
+        </Modal>
         <Modal
           show={this.state.resultModal}
           modalClosed={this.resultCloseHandler}
         >
-          <DynamicResult resultContinued={this.resultCloseHandler} data={this.state.answer}/>
+          <DynamicResult 
+            resultContinued={this.resultCloseHandler} 
+            data={this.state.answer}/>
         </Modal>
-        <Modal show={this.state.loadingModal}
-        modalClosed={this.resultCloseHandler}>
-          <p>Ekran ładowania</p>
-          <Spinner/>
-        </Modal>
+        
         <DynamicSheet
           value={this.state.stuffAmount}
           submitted={this.dataConfirmedHandler}
