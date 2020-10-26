@@ -41,7 +41,6 @@ const DynamicSheet = (props) => {
           <InputGroup>
             <InputGroupAddon addonType='prepend'>$</InputGroupAddon>
             <Input
-              placeholder='Amount'
               min={0}
               max={100}
               type='number'
