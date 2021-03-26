@@ -5,9 +5,6 @@ const approximationRoute = require('./routes/approximation');
 
 const app = express();
 
-
-
-//app.use(cors());
 app.use(express.json());
 
 app.use(dynamicRoute);

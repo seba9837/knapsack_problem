@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import axios from 'axios';
 
 import AproximationSheet from "../../components/Approximation/AproximationSheet/AproximationSheet";
-import Cont from "../../hoc/Cont/Cont";
 import Modal from "../../components/UI/Modal/Modal";
 import AproximationSummary from "../../components/Approximation/AproximationSummary/AproximationSummary";
 import AproximationResult from "../../components/Approximation/AproximationResult/AproximationResult";
-import Spinner from "../../components/UI/Spinner/Spinner"
+import Spinner from "../../components/UI/Spinner/Spinner";
+import "../../App.css"
 
 class AproxiamtionAlgorithmBuilder extends Component {
   state = {
@@ -75,7 +75,7 @@ class AproxiamtionAlgorithmBuilder extends Component {
   render() {
 
     return (
-      <Cont>
+      <div style={{backgroundColor: '#F4F4F4',height: "100%", width:"80%", marginLeft:"auto", marginRight:"auto", padding: "8px"}}>
         <Modal
           show={this.state.submiting}
           modalClosed={this.summaryCloseHandler}
@@ -109,7 +109,10 @@ class AproxiamtionAlgorithmBuilder extends Component {
           worthChanged={(event) => this.updateWorthOfElements(event)}
           numberChanged={(event) => this.updateNumberOfElements(event)}
           maxWeightChanged={(event) => this.updateMaxWeight(event)} />
-      </Cont>
+          {/*<div style={{position: "fixed", left: 0, bottom: 0, width: "100%", height: "50px", backgroundColor: "black"}}>
+            <p>ss</p>
+    </div>*/}
+      </div>
     );
   }
 }

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from 'axios';
-
 import DynamicSheet from "../../components/Dynamic/DynamicSheet/DynamicSheet";
 import Cont from "../../hoc/Cont/Cont";
 import Modal from "../../components/UI/Modal/Modal";
@@ -74,7 +73,7 @@ class DynamicSolverBuilder extends Component {
   }
   render() {
     return (
-      <Cont>
+      <div style={{backgroundColor: '#F4F4F4',height: "100%", width:"80%", marginLeft:"auto", marginRight:"auto", padding: "8px"}}>
         <Modal
           show={this.state.submiting}
           modalClosed={this.summaryCloseHandler}
@@ -110,7 +109,7 @@ class DynamicSolverBuilder extends Component {
           numberChanged={(event) => this.updateNumberOfElements(event)}
           maxWeightChanged={(event) => this.updateMaxWeight(event)}
         />
-      </Cont>
+      </div>
     );
   }
 }

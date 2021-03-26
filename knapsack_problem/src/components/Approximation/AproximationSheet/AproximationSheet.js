@@ -55,16 +55,11 @@ const AproximationSheet = (props) => {
   function getStepContent(step) {
     switch (step) {
       case 0:
-        return `For each ad campaign that you create, you can control how much
-                you're willing to spend on clicks and conversions, which networks
-                and geographical locations you want your ads to show on, and more.`;
+        return `Wprowadź liczbę elementów, które chcesz umieścić w plecaku oraz jego maksymalną wagę. Obie liczby powinny być całkowite.`;
       case 1:
-        return 'An ad group contains one or more ads which target a shared set of keywords.';
+        return 'Wprowadź wagę oraz wartość każdego elementu. Wartości muszą być odesparowane przecinkiem. Wagi oraz wartości powinny być wprowadzane w takiej samej kolejności. Jeżeli liczba wpisanych wartości przekroczy wpisaną wcześniej liczbę elemenów, aplikacja nie weźmie pod uwage nadmiarowych wartości';
       case 2:
-        return `Try out different ad text to see what brings in the most customers,
-                and learn how to enhance your ads using features like ad extensions.
-                If you run into any problems with your ads, find out how to tell if
-                they're running and how to resolve approval issues.`;
+        return `Po uzupełnieniu formularza naciśnij przycisk "GOTOWE". Wówczas wyświetli się okno z wpisanymi danymi  w celu potwierdzenia. Jeżeli są poprawne potwierdź je i oczekuj na wynik. W przypadku pomyłki możliwe jest cofnięcie do formularza.`;
       default:
         return 'Unknown step';
     }
