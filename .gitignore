@@ -2,15 +2,16 @@
 
 # dependencies
 
-knapsack_problem/node_modules
+srv/node_modules
+web/node_modules
 knapsack_problem/.pnp
 .pnp.js
 
 # testing
-knapsack_problem/coverage
+web/coverage
 
 # production
-knapsack_problem/build
+web/build
 
 # misc
 .DS_Store
